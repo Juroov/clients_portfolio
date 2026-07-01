@@ -1,26 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Kaushan+Script&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #F5F1E7;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-elevated: #FBF8F0;
+  --color-green: #22362B;
+  --color-green-light: #2E4A3A;
+  --color-text: #1F1B16;
+  --color-text-muted: #6B6459;
+  --color-inverse: #F5F1E7;
+  --color-border: #E5DECF;
+  --color-border-strong: #D6CDBA;
+  --color-accent: #B01727;
+  --color-accent-bright: #E11B2E;
+  --color-accent-dark: #8E1420;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-bg-surface);
+  --color-elevated: var(--color-bg-elevated);
+  --color-green: var(--color-green);
+  --color-green-light: var(--color-green-light);
+  --color-ink: var(--color-text);
+  --color-muted: var(--color-text-muted);
+  --color-inverse: var(--color-inverse);
+  --color-line: var(--color-border);
+  --color-line-strong: var(--color-border-strong);
+  --color-accent: var(--color-accent);
+  --color-accent-bright: var(--color-accent-bright);
+  --color-accent-dark: var(--color-accent-dark);
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-condensed: 'Anton', system-ui, sans-serif;
+  --font-brush: 'Kaushan Script', cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
