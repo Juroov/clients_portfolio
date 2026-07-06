@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
 function Ticker({ value, suffix = "" }: { value: number; suffix?: string }) {
@@ -27,11 +27,11 @@ function Ticker({ value, suffix = "" }: { value: number; suffix?: string }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
 };
-const line = {
+const line: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
 };

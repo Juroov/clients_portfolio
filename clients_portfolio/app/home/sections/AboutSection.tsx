@@ -353,7 +353,6 @@ export default function AboutSection() {
               background: "linear-gradient(135deg, rgba(200,16,46,0.04) 0%, transparent 100%)",
               padding: "1.25rem 1.25rem 1.25rem 1.75rem",
               borderRadius: "0 0.5rem 0.5rem 0",
-              borderLeft: "3px solid #C8102E",
             }}
           >
             &ldquo;Protection first, growth second — that&apos;s how families stay
