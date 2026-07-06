@@ -1,56 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Kaushan+Script&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 :root {
-  --color-bg: #F5F1E7;
-  --color-bg-surface: #FFFFFF;
-  --color-bg-elevated: #FBF8F0;
-  --color-green: #22362B;
-  --color-green-light: #2E4A3A;
-  --color-text: #1F1B16;
-  --color-text-muted: #6B6459;
-  --color-inverse: #F5F1E7;
-  --color-border: #E5DECF;
-  --color-border-strong: #D6CDBA;
-  --color-accent: #B01727;
-  --color-accent-bright: #E11B2E;
-  --color-accent-dark: #8E1420;
+  /* ── Core Background System ── */
+  --color-bg:           #0A0A0A;
+  --color-bg-surface:   #111111;
+  --color-bg-elevated:  #181818;
+  --color-bg-card:      #141414;
+  --color-bg-glass:     rgba(17, 17, 17, 0.8);
+
+  /* ── Crimson Accent (sole brand color) ── */
+  --color-accent:       #C8102E;
+  --color-accent-bright:#E8112D;
+  --color-accent-dark:  #9B0C23;
+  --color-accent-muted: rgba(200, 16, 46, 0.12);
+  --color-accent-glow:  rgba(200, 16, 46, 0.28);
+
+  /* ── White / Off-white palette ── */
+  --color-white:        #FFFFFF;
+  --color-off-white:    #F5F5F5;
+  --color-cream:        #EBEBEB;
+
+  /* ── Text ── */
+  --color-text:         #F0F0F0;
+  --color-text-muted:   #888888;
+  --color-text-subtle:  #444444;
+  --color-inverse:      #0A0A0A;
+
+  /* ── Borders ── */
+  --color-border:       rgba(255, 255, 255, 0.08);
+  --color-border-strong:rgba(255, 255, 255, 0.16);
+  --color-border-accent:rgba(200, 16, 46, 0.3);
+
+  /* ── Gradients ── */
+  --gradient-hero:      radial-gradient(ellipse 70% 50% at 50% -10%, rgba(200,16,46,0.22) 0%, transparent 65%), #0A0A0A;
+  --gradient-crimson:   linear-gradient(135deg, #C8102E 0%, #E8112D 100%);
+  --gradient-card:      linear-gradient(135deg, #141414 0%, #0F0F0F 100%);
+
+  /* Legacy compat aliases */
+  --color-green:        #141414;
+  --color-green-light:  #1A1A1A;
+  --color-gold:         #C8102E;
+  --color-gold-light:   #F0F0F0;
+  --color-gold-dark:    #9B0C23;
+  --color-gold-muted:   rgba(200, 16, 46, 0.12);
+  --color-gold-glow:    rgba(200, 16, 46, 0.28);
+  --color-navy:         #141414;
+  --color-navy-light:   #1A1A1A;
+  --color-navy-dark:    #0A0A0A;
 }
 
 @theme inline {
-  --color-bg: var(--color-bg);
-  --color-surface: var(--color-bg-surface);
-  --color-elevated: var(--color-bg-elevated);
-  --color-green: var(--color-green);
-  --color-green-light: var(--color-green-light);
-  --color-ink: var(--color-text);
-  --color-muted: var(--color-text-muted);
-  --color-inverse: var(--color-inverse);
-  --color-line: var(--color-border);
-  --color-line-strong: var(--color-border-strong);
-  --color-accent: var(--color-accent);
-  --color-accent-bright: var(--color-accent-bright);
-  --color-accent-dark: var(--color-accent-dark);
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-condensed: 'Anton', system-ui, sans-serif;
-  --font-brush: 'Kaushan Script', cursive;
+  --color-bg:           var(--color-bg);
+  --color-surface:      var(--color-bg-surface);
+  --color-elevated:     var(--color-bg-elevated);
+  --color-green:        var(--color-navy);
+  --color-green-light:  var(--color-navy-light);
+  --color-ink:          var(--color-text);
+  --color-muted:        var(--color-text-muted);
+  --color-inverse:      var(--color-inverse);
+  --color-line:         var(--color-border);
+  --color-line-strong:  var(--color-border-strong);
+  --color-accent:       var(--color-accent);
+  --color-accent-bright:var(--color-accent-bright);
+  --color-accent-dark:  var(--color-accent-dark);
+  --color-accent-muted: var(--color-accent-muted);
+  --font-sans:          'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-serif:         'Cormorant Garamond', Georgia, serif;
+  --font-condensed:     'Syne', system-ui, sans-serif;
+  --font-brush:         'Cormorant Garamond', serif;
 }
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #C8102E #111111;
+}
+
+html::-webkit-scrollbar { width: 4px; }
+html::-webkit-scrollbar-track { background: #111111; }
+html::-webkit-scrollbar-thumb {
+  background: #C8102E;
+  border-radius: 999px;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ::selection {
   background-color: var(--color-accent);
   color: #fff;
+}
+
+/* ── Utility: Crimson text gradient ── */
+.text-crimson {
+  background: linear-gradient(135deg, #C8102E 0%, #E8112D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Shimmer is now a subtle white pulse for editorial feel ── */
+.text-gold-shimmer {
+  color: var(--color-white);
+}
+
+.glass-card {
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-card-gold {
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(200, 16, 46, 0.2);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); opacity: 0.7; }
+  70%  { transform: scale(1.1);  opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

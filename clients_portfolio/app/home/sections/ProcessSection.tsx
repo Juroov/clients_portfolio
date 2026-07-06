@@ -1,12 +1,37 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { MessageCircle, FileText, Shield, RefreshCw } from "lucide-react";
 
 const steps = [
-  { num: "01", label: "Talk", desc: "A relaxed, zero-pressure kwentuhan to understand where you are financially." },
-  { num: "02", label: "Plan", desc: "A custom strategy built around your real numbers, income, and life goals." },
-  { num: "03", label: "Protect", desc: "We lock in your coverage and set up the financial safety net your family needs." },
-  { num: "04", label: "Review", desc: "Regular check-ins to adjust and optimize as your life and income grow." },
+  {
+    num: "01",
+    label: "Talk",
+    icon: MessageCircle,
+    desc: "A relaxed, zero-pressure kwentuhan to understand where you are financially.",
+    accent: "#C8102E",
+  },
+  {
+    num: "02",
+    label: "Plan",
+    icon: FileText,
+    desc: "A custom strategy built around your real numbers, income, and life goals.",
+    accent: "#E8112D",
+  },
+  {
+    num: "03",
+    label: "Protect",
+    icon: Shield,
+    desc: "We lock in your coverage and set up the financial safety net your family needs.",
+    accent: "#C8102E",
+  },
+  {
+    num: "04",
+    label: "Review",
+    icon: RefreshCw,
+    desc: "Regular check-ins to adjust and optimize as your life and income grow.",
+    accent: "#E8112D",
+  },
 ];
 
 export default function ProcessSection() {
@@ -15,44 +40,64 @@ export default function ProcessSection() {
       id="process"
       style={{
         width: "100%",
-        padding: "7rem 1.5rem",
-        backgroundColor: "var(--color-bg-elevated)",
+        padding: "8rem 1.5rem",
+        background: "linear-gradient(180deg, #0A0A0A 0%, #111111 100%)",
         overflow: "hidden",
+        position: "relative",
       }}
     >
-      <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "5rem" }}>
+      {/* Background elements */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "-10%",
+          transform: "translateY(-50%)",
+          width: "40vw",
+          height: "40vw",
+          borderRadius: "9999px",
+          background: "radial-gradient(circle, rgba(200,16,46,0.06) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div style={{ maxWidth: "90rem", margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "5.5rem" }}>
           <p
             style={{
-              fontFamily: "'Anton', sans-serif",
+              fontFamily: "'Syne', sans-serif",
               textTransform: "uppercase",
-              letterSpacing: "0.15em",
-              fontSize: "0.8rem",
-              color: "var(--color-text-muted)",
-              marginBottom: "0.5rem",
+              letterSpacing: "0.2em",
+              fontSize: "0.7rem",
+              color: "#C8102E",
+              marginBottom: "0.875rem",
+              fontWeight: 700,
             }}
           >
             The Process
           </p>
           <motion.h2
             style={{
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: 900,
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 700,
+              fontSize: "clamp(2rem, 4.5vw, 3.75rem)",
               color: "var(--color-text)",
               margin: 0,
             }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             How it{" "}
             <span
               style={{
-                fontFamily: "'Kaushan Script', cursive",
-                color: "var(--color-accent)",
-                fontSize: "1.1em",
+                fontStyle: "italic",
+                background: "linear-gradient(135deg, #FFFFFF 0%, #C8102E 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
             >
               works
@@ -61,66 +106,68 @@ export default function ProcessSection() {
         </div>
 
         {/* Steps */}
-        <div
-          style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0" }}
-          className="process-steps"
-        >
+        <div className="process-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0" }}>
           {steps.map((s, i) => (
             <motion.div
               key={i}
               style={{
                 display: "grid",
-                gridTemplateColumns: "auto 1fr",
-                gap: "2rem",
+                gridTemplateColumns: "5rem 1fr",
+                gap: "2.5rem",
                 alignItems: "flex-start",
-                padding: "2.5rem 0",
-                borderBottom: i < steps.length - 1 ? "1px solid var(--color-border)" : "none",
+                padding: "2.75rem 0",
+                borderBottom: i < steps.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                position: "relative",
               }}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Number */}
-              <div style={{ width: "5rem", textAlign: "right", paddingTop: "0.25rem" }}>
+              {/* Step number */}
+              <div style={{ textAlign: "right", paddingTop: "0.5rem", position: "relative" }}>
                 <span
                   style={{
-                    fontFamily: "'Anton', sans-serif",
-                    fontSize: "3.5rem",
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontWeight: 700,
+                    fontSize: "4.5rem",
                     lineHeight: 1,
-                    color: "var(--color-accent)",
-                    opacity: 0.18,
+                    background: `linear-gradient(135deg, ${s.accent} 0%, transparent 100%)`,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    opacity: 0.25,
                   }}
                 >
                   {s.num}
                 </span>
               </div>
+
               {/* Content */}
               <div>
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
-                  <div
+                <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", marginBottom: "1rem" }}>
+                  <motion.div
                     style={{
-                      width: "2.75rem",
-                      height: "2.75rem",
-                      backgroundColor: "var(--color-accent)",
-                      color: "#fff",
-                      borderRadius: "9999px",
+                      width: "3rem",
+                      height: "3rem",
+                      background: `linear-gradient(135deg, ${s.accent}20 0%, ${s.accent}08 100%)`,
+                      border: `1px solid ${s.accent}35`,
+                      borderRadius: "1rem",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontFamily: "'Playfair Display', serif",
-                      fontWeight: 900,
-                      fontSize: "1rem",
+                      color: s.accent,
                       flexShrink: 0,
                     }}
+                    whileHover={{ scale: 1.1, background: `${s.accent}30` }}
                   >
-                    {i + 1}
-                  </div>
+                    <s.icon size={18} />
+                  </motion.div>
                   <h3
                     style={{
-                      fontFamily: "'Playfair Display', serif",
+                      fontFamily: "'Cormorant Garamond', serif",
                       fontWeight: 700,
-                      fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
+                      fontSize: "clamp(1.5rem, 3vw, 2rem)",
                       color: "var(--color-text)",
                       margin: 0,
                     }}
@@ -132,24 +179,35 @@ export default function ProcessSection() {
                   style={{
                     fontSize: "1rem",
                     color: "var(--color-text-muted)",
-                    lineHeight: 1.75,
+                    lineHeight: 1.85,
                     maxWidth: "36rem",
                     margin: 0,
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontWeight: 400,
                   }}
                 >
                   {s.desc}
                 </p>
               </div>
+
+              {/* Vertical connector line */}
+              {i < steps.length - 1 && (
+                <div
+                  style={{
+                    position: "absolute",
+                    left: "5rem",
+                    bottom: 0,
+                    transform: "translateX(calc(50% + 1.25rem))",
+                    width: "1px",
+                    height: "2.75rem",
+                    background: `linear-gradient(to bottom, ${s.accent}50, transparent)`,
+                  }}
+                />
+              )}
             </motion.div>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @media (min-width: 768px) {
-          .process-steps { gap: 0 !important; }
-        }
-      `}</style>
     </section>
   );
 }
